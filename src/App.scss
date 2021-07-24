@@ -1,0 +1,72 @@
+@import 'scss/variables.scss';
+
+/* @import 'containers/Home/Home';
+@import 'containers/Login/Login';
+@import 'containers/Register/Register.scss';
+@import 'containers/DataContainer/DataContainer.scss';
+@import 'containers/MovieDetails/MovieDetails.scss';
+@import 'containers/Profile/Profile.scss';
+@import 'containers/Payment/Payment';
+
+@import 'components/Header/Header';
+@import 'components/MenuLateral/MenuLateral';
+@import 'components/DataProfile/DataProfile.scss';
+@import 'components/HomeVideo/HomeVideo';
+@import 'components/SearchBy/SearchBy';
+@import 'components/SearchComingSoon/SearchComingSoon';
+@import 'components/SearchTopRated/SearchTopRated';
+
+
+ */
+
+
+
+
+
+.App {
+  text-align: center;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  background-color: black;
+  color: white;
+}
+
+/* .App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
