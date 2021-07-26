@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap');
+
+.mlf-logo-bracket {
+    font-family: 'Fira Code', monospace !important;
+    font-size: 20px !important;
+    color: #F0EC57 !important;
+}
+
+.mlf-logo {
+    font-family: 'Fira Code', monospace !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+}
+
+.mlf-more-space {
+    margin-right: 20em !important;
+}
+
+
+.mlf-btn-color {
+    border-color: black !important;
+    color: black !important;
+
+    &:hover {
+        background-color: #F0EC57 !important;
+        color: black !important;
+    }
+}
+
+.mlf-btn-color-solid {
+    background-color: black;
+    border-color: black !important;
+    color: white !important;
+
+    &:hover {
+        background-color: #F0EC57 !important;
+        color: black !important;
+    }
+}
+
