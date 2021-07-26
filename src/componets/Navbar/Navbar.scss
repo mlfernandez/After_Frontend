@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap');
 
+
 .mlf-logo-bracket {
     font-family: 'Fira Code', monospace !important;
     font-size: 20px !important;
@@ -13,7 +14,7 @@
 }
 
 .mlf-more-space {
-    margin-right: 20em !important;
+    margin-right: em !important;
 }
 
 
@@ -38,3 +39,7 @@
     }
 }
 
+/* .btn-outline-success {
+    color: #F0EC57 !important;
+    border-color: #F0EC57 !important;
+} */
