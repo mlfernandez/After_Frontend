@@ -1,13 +1,16 @@
 @import 'scss/variables.scss';
-
-/* @import 'containers/Home/Home';
+@import 'containers/Home/Home';
 @import 'containers/Login/Login';
 @import 'containers/Register/Register.scss';
 @import 'containers/DataContainer/DataContainer.scss';
+@import 'components/Navbar/Navbar.scss';
+@import 'components/ViewProfile/ViewProfile.scss';
+
+/* ';
+
 @import 'containers/MovieDetails/MovieDetails.scss';
 @import 'containers/Profile/Profile.scss';
 @import 'containers/Payment/Payment';
-
 @import 'components/Header/Header';
 @import 'components/MenuLateral/MenuLateral';
 @import 'components/DataProfile/DataProfile.scss';

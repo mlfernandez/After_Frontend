@@ -4,7 +4,9 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Home from './containers/Home/Home';
 import Login from './containers/Login/Login';
 import Register from './containers/Register/Register';
-import Navbar from './componets/Navbar/Navbar';
+import Navbar from './components/Navbar/Navbar';
+import DataContainer from './containers/DataContainer/DataContainer';
+
 
 /* ;
 
@@ -31,6 +33,8 @@ function App() {
           <Route path="/" exact component={Home}/>
           <Route path="/login" exact component={Login}/>
           <Route path="/register" exact component={Register}/>
+          <Route path="/datacontainer" exact component={DataContainer}/>
+        
 
 
 

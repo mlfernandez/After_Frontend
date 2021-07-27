@@ -5,24 +5,28 @@
   justify-content: center;
   height: auto;
   margin-top: 5em;
+
+  .loginTitle {
+    text-align: center !important;
+  }
+}
+
+.inputLogin {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
 }
 
 .loginForm {
   
-  flex-direction: row;
+  flex-direction: column;
   display: flex;
   justify-content: center;
 
   .iconLoginForm{
-/*   height: 6.5vh;
-  width: 12vw; */
   margin: 1em;
   display: flex;
-/*   justify-content: center; */
   flex-direction: column;
-/*   align-items: center;
-  border-radius: 1em;
-  transition: 0.3s; */
   font-size: 21px;
 
   .iconLoginFormItem {
@@ -31,15 +35,8 @@
 }
 
   .inputLoginForm{
-/*     height: 6.5vh;
-    width: 12vw; */
     margin: 1em;
-/*     display: flex;
-    justify-content: center; */
     flex-direction: column;
-/*     align-items: flex-start;
-    border-radius: 1em;
-    transition: 0.3s; */
     font-size: 20px;
     padding-left: 0.3em;
     
@@ -52,13 +49,16 @@
 
 .mlf-submit-btn {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     margin-bottom: 1em;
+    align-items: center !important;
+    justify-content: center !important;
 
     .mlf-btn-yellow{
       background-color: #F0EC57 !important;
       color: black !important;
+      width: 15em !important;
+
 
       &:hover {
         background-color: black !important;
@@ -69,6 +69,12 @@
     }
 }
 
+.msgError {
+  text-align: center;
+  color: red;
+  
+
+}
 
 .forgot-password,
 .forgot-password a {
@@ -82,4 +88,3 @@
 .forgot-password a {
   color: #167bff;
 }
-

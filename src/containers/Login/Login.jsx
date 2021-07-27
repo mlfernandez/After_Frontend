@@ -1,12 +1,15 @@
+
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {LOGIN} from '../../redux/types'
+import {LOGIN, LOGOUT} from '../../redux/types'
 import {notification} from 'antd';
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import './Login.scss';
+
 
 
 
@@ -89,56 +92,48 @@ const Login = (props) => {
 
     return (
 
-        <div className="loginContainer">          
-            <form>
-                <h5>¡Inicia sesión en tu cuenta de After!</h5>
+        <div className = "loginContainer">
 
-                <div className="loginForm">
+            <h5 className="loginTitle">¡Inicia sesión en tu cuenta de [ After ]!</h5>
+
+            
+    
+            <div className = "loginForm"> 
+
+                <div className="inputLogin">
+
                     <div className="iconLoginForm">
                         <FontAwesomeIcon className="iconLoginFormItem" icon={faUser}/>
                         <FontAwesomeIcon className="iconLoginFormItem" icon={faLock}/>
                     </div>
-
-                    <div className="form-group inputLoginForm" >
-                        <input type="email" className="form-control inputLoginFormItem" placeholder="Email" onChange={updateCredentials} />
-                        <input type="password" className="form-control inputLoginFormItem" placeholder="Password" onChange={updateCredentials} />
+                
+                    <div className = "form-group inputLoginForm">
+                        <input className="input" type="email" name="email" className="form-control inputLoginFormItem" placeholder="email" onChange={updateCredentials} size="40" lenght='30'></input>
+                        <input className="input" type="password" name="password" className="form-control inputLoginFormItem" placeholder="password" onChange={updateCredentials} size="40" lenght='30'></input>
                     </div>
+                    <div className = "form-group inputLoginForm">
+                    </div>
+
+                </div>
+                
+                <div className="mlf-submit-btn">
+                    <button type="submit" className="btn btn-primary btn-block mlf-btn-yellow" onClick={()=>logueame()}>Iniciar sesión</button>
+
                 </div>
 
-                <div className="mlf-submit-btn">
-                <button type="submit" className="btn btn-primary btn-block mlf-btn-yellow" onClick={()=>logueame()}>Iniciar sesión</button>
-                </div>
-                <div>{msgError}</div>
+                <div className="msgError text-center">{msgError}</div>
                 <p className="forgot-password text-center">
-                    Olvido la <a href="#">contraseña?</a>
+                    Olvidó la <a href="#">contraseña?</a>
                 </p>
                 <p className="forgot-password text-center">
                     ¿Aun no tienes cuenta? <a href="/register">¡Registrate aqui!</a>
                 </p>
-            </form>
-{/* 
-            <div className = "vistaLogin">
-        
-                <div className = "loginCard"> 
-                <div className="titleLogin">Accede a tu cuenta</div>
-                    <div className = "cardLogin">
-                        <input className="input" type="email" name="email" placeholder="email" onChange={updateCredentials} size="40" lenght='30'></input>
-                    </div>
-                    <div className = "cardLogin">
-                        <input className="input" type="password" name="password" placeholder="password" onChange={updateCredentials} size="40" lenght='30'></input>
-                        
-                    </div>
-                    
-                    <div className = "sendButton" onClick={()=>logueame()}>Login</div>
-                    <div>{msgError}</div>
-                    <div className="titleLoginBottom">¿Aun no tienes cuenta?</div>
-                    <NavLink style={{ color: '#F02D3A', textDecoration: 'inherit' }} to="/register">¡Registrate aqui!.</NavLink>
-                </div>
-        
-            </div>    */}
-      
+            </div>
         </div>
     )
+      
+        
+    
 }
 
 export default connect()(Login);
