@@ -1,88 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Montserrat:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+.loginContainer {
+  display: flex ;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  margin-top: 5em;
+}
 
+.loginForm {
+  
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
 
-.vistaLogin {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: unset;
-    height: auto;
-    margin-top: 5em;
+  .iconLoginForm{
+/*   height: 6.5vh;
+  width: 12vw; */
+  margin: 1em;
+  display: flex;
+/*   justify-content: center; */
+  flex-direction: column;
+/*   align-items: center;
+  border-radius: 1em;
+  transition: 0.3s; */
+  font-size: 21px;
+
+  .iconLoginFormItem {
+    margin-top: 1em;
   }
+}
 
-  .titleLogin {
+  .inputLoginForm{
+/*     height: 6.5vh;
+    width: 12vw; */
+    margin: 1em;
+/*     display: flex;
+    justify-content: center; */
+    flex-direction: column;
+/*     align-items: flex-start;
+    border-radius: 1em;
+    transition: 0.3s; */
+    font-size: 20px;
+    padding-left: 0.3em;
+    
+    .inputLoginFormItem {
+      margin-top: 0.5em;
+    }
+  }
+}
 
-    font-weight: bold;
-    font-size: 25px;
-    font-family: 'Antonio', sans-serif;
+
+.mlf-submit-btn {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     margin-bottom: 1em;
 
-  }
+    .mlf-btn-yellow{
+      background-color: #F0EC57 !important;
+      color: black !important;
 
-  
-  .titleLoginBottom {
+      &:hover {
+        background-color: black !important;
+        border-color: black !important;
+        color: white !important;
 
-    font-size: 18px;
-    margin-top: 1em;
+      }
+    }
+}
 
-  }
-  
-  .loginCard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    border-radius: 5px;
-    color: white;
-    font-size: 14px;
-  }
-  
-  .cardLogin{
-      margin: 0.5em;
-      
-  }
-  
-  .sendButton {
-    position: relative;
-    margin: 15px 0 5px 0;
-    background: #303036;
-    border-radius: 5px;
-    padding: 10px;
-    color: white;
-    font-size: 14px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .sendButton:hover {
-    background: #e15554;
-    transition: 0.2s;
-  }
-  
-  .nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-  
-  .input{
-    width: 100%;
-    height: 36px;
-    border-radius: 4px;
-    padding-left: 12px;
-    font-size: 14px;
-    font-weight: normal;
-    font-family: Akzidenz, "‘Helvetica Neue’", Helvetica, Arial, sans-serif;
-    border: 1px solid rgb(184, 196, 194);
-    transition: border-color 150ms ease-in-out 1s;
-    z-index: 1;
-    outline: none;
-    color: rgb(33, 49, 60);
-    background-color: rgb(255, 255, 255);
-    padding-right: 12px;
-  }
+
+.forgot-password,
+.forgot-password a {
+  text-align: right;
+  font-size: 13px;
+  padding-top: 10px;
+  color: #7f7d7d;
+  margin: 0;
+}
+
+.forgot-password a {
+  color: #167bff;
+}
+

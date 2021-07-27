@@ -4,7 +4,10 @@ import {useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {LOGIN} from '../../redux/types'
 import {notification} from 'antd';
-import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
+import './Login.scss';
+
 
 
 const Login = (props) => {
@@ -86,8 +89,34 @@ const Login = (props) => {
 
     return (
 
-        <div>          
+        <div className="loginContainer">          
+            <form>
+                <h5>¡Inicia sesión en tu cuenta de After!</h5>
 
+                <div className="loginForm">
+                    <div className="iconLoginForm">
+                        <FontAwesomeIcon className="iconLoginFormItem" icon={faUser}/>
+                        <FontAwesomeIcon className="iconLoginFormItem" icon={faLock}/>
+                    </div>
+
+                    <div className="form-group inputLoginForm" >
+                        <input type="email" className="form-control inputLoginFormItem" placeholder="Email" onChange={updateCredentials} />
+                        <input type="password" className="form-control inputLoginFormItem" placeholder="Password" onChange={updateCredentials} />
+                    </div>
+                </div>
+
+                <div className="mlf-submit-btn">
+                <button type="submit" className="btn btn-primary btn-block mlf-btn-yellow" onClick={()=>logueame()}>Iniciar sesión</button>
+                </div>
+                <div>{msgError}</div>
+                <p className="forgot-password text-center">
+                    Olvido la <a href="#">contraseña?</a>
+                </p>
+                <p className="forgot-password text-center">
+                    ¿Aun no tienes cuenta? <a href="/register">¡Registrate aqui!</a>
+                </p>
+            </form>
+{/* 
             <div className = "vistaLogin">
         
                 <div className = "loginCard"> 
@@ -106,7 +135,7 @@ const Login = (props) => {
                     <NavLink style={{ color: '#F02D3A', textDecoration: 'inherit' }} to="/register">¡Registrate aqui!.</NavLink>
                 </div>
         
-            </div>   
+            </div>    */}
       
         </div>
     )
