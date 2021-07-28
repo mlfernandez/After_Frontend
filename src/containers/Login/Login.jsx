@@ -5,10 +5,10 @@ import {useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {LOGIN, LOGOUT} from '../../redux/types'
 import {notification} from 'antd';
-import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import './Login.scss';
+import 'antd/dist/antd.css';
 
 
 
@@ -79,6 +79,7 @@ const Login = (props) => {
 
             } catch (err) {
                    if (err.response.data.message.includes("La cuenta no está activa")) {   
+                    console.log("la cuenta no esta activa")
                     notification.warning({message:'Atencion!', description: "La cuenta no está activa. Por favor, revisa tu correo electrónico y activa tu cuenta."});
                     } else { 
                     console.log("usuario no encontrado")
@@ -108,13 +109,20 @@ const Login = (props) => {
                     </div>
                 
                     <div className = "form-group inputLoginForm">
-                        <input className="input" type="email" name="email" className="form-control inputLoginFormItem" placeholder="email" onChange={updateCredentials} size="40" lenght='30'></input>
-                        <input className="input" type="password" name="password" className="form-control inputLoginFormItem" placeholder="password" onChange={updateCredentials} size="40" lenght='30'></input>
-                    </div>
-                    <div className = "form-group inputLoginForm">
-                    </div>
 
-                </div>
+                        <input className="input" type="email" name="email" className="form-control inputLoginFormItem" placeholder="Email" 
+                            onChange={updateCredentials} size="40" lenght='30'>
+                        </input>
+
+                        <input className="input" type="password" name="password" className="form-control inputLoginFormItem" placeholder="Contraseña" 
+                            onChange={updateCredentials} size="40" lenght='30'>
+                        </input>
+
+                        </div>
+                        <div className = "form-group inputLoginForm">
+                        </div>
+
+                     </div>
                 
                 <div className="mlf-submit-btn">
                     <button type="submit" className="btn btn-primary btn-block mlf-btn-yellow" onClick={()=>logueame()}>Iniciar sesión</button>
@@ -122,6 +130,7 @@ const Login = (props) => {
                 </div>
 
                 <div className="msgError text-center">{msgError}</div>
+                
                 <p className="forgot-password text-center">
                     Olvidó la <a href="#">contraseña?</a>
                 </p>

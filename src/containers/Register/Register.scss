@@ -1,0 +1,106 @@
+.registerContainer {
+    display: flex ;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    margin-top: 5em;
+  
+    .registerTitle {
+      text-align: center !important;
+    }
+  }
+  
+  .inputRegister {
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .registerForm {
+    
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+  
+    .iconRegisterForm{
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    font-size: 21px;
+  
+    .iconRegisterFormItem {
+      margin-top: 1.1em;
+      margin-right: -2em;
+    }
+  }
+  
+    .inputRegisterForm{
+      margin: 1em;
+      flex-direction: column;
+      font-size: 20px;
+      padding-left: 0.3em;
+      
+      .inputRegisterFormItem {
+        margin-top: 0.5em;
+      }
+    }
+  }
+  
+  
+  .mlf-submit-btn {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1em;
+      align-items: center !important;
+      justify-content: center !important;
+  
+      .mlf-btn-yellow{
+        background-color: #F0EC57 !important;
+        color: black !important;
+        width: 15em !important;
+  
+  
+        &:hover {
+          background-color: black !important;
+          border-color: black !important;
+          color: white !important;
+  
+        }
+      }
+  }
+  
+  .msgError {
+    text-align: center;
+    color: red;
+    font-size: 12px !important;
+    
+  
+  }
+  
+  .forgot-password,
+  .forgot-password a {
+    text-align: right;
+    font-size: 13px;
+    padding-top: 10px;
+    color: #7f7d7d;
+    margin: 0;
+  }
+  
+  .forgot-password a {
+    color: #167bff;
+  }
+
+.icon {
+  height: -webkit-fill-available;
+}
+
+
+
+
+
+
+
+
+
+
