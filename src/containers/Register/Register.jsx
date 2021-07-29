@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import "./Register.scss";
 import axios from 'axios';
 import {useHistory} from "react-router";
-import moment from 'moment';
 import {connect} from 'react-redux';
 import {notification} from 'antd';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -123,6 +122,10 @@ const Register = () => {
                 }
             break;
 
+            default:
+
+            break;
+
         }
     }
 
@@ -196,28 +199,28 @@ const Register = () => {
             
                 <div className = "form-group inputRegisterForm">
                     
-                    <input className="input" type="text" name="name" className="form-control inputRegisterFormItem"
+                    <input className="input form-control inputRegisterFormItem" type="text" name="name" 
                         onChange={updateFormulario} onBlur={()=>checkError("name")} 
                         placeholder="Nombre" size="40" lenght='30'>
                     </input>
                     
                     <div className="msgError text-center mlf-text-small">{errors.eName}</div>
 
-                    <input className="input" type="email" name="email" className="form-control inputRegisterFormItem"
+                    <input className="input form-control inputRegisterFormItem" type="email" name="email" 
                         onChange={updateFormulario} onBlur={()=>checkError("email")} 
                         placeholder="Email" size="40" lenght='30'>
                     </input>
                     
                     <div className="msgError text-center mlf-text-small">{errors.eEmail}</div>
 
-                    <input className="input" type="password" name="password" className="form-control inputRegisterFormItem"
+                    <input className="input form-control inputRegisterFormItem" type="password" name="password" 
                         onChange={updateFormulario} onBlur={()=>checkError("password")} 
                         placeholder="Contraseña" size="40" lenght='8'>
                     </input>
                     
                     <div className="msgError text-center mlf-text-small">{errors.ePassword}</div>
 
-                    <input className="input" type="password" name="password2" className="form-control inputRegisterFormItem"
+                    <input className="input form-control inputRegisterFormItem" type="password" name="password2" 
                         onChange={updateFormulario} onBlur={()=>checkError("password2")} 
                         placeholder="Confirmar contraseña" size="40" lenght='8'>
                     </input>

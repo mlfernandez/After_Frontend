@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {LOGIN, LOGOUT} from '../../redux/types'
+import {LOGIN} from '../../redux/types'
 import {notification} from 'antd';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
@@ -69,13 +69,13 @@ const Login = (props) => {
                 props.dispatch({type:LOGIN,payload:data});
                                
                 //Mensaje de bienvenida
-                let description = ("Bienvenido " + res.data.user.name + " " + res.data.user.last_name1 + ".");
+                let description = ("¡Hola " + res.data.user.name + "!");
                 
     
                 notification.success({message:'Login correcto.',description: description});
                 
                 //Redireccion           
-                history.push("/profile");
+                history.push("/datacontainer");
 
             } catch (err) {
                    if (err.response.data.message.includes("La cuenta no está activa")) {   
@@ -110,11 +110,11 @@ const Login = (props) => {
                 
                     <div className = "form-group inputLoginForm">
 
-                        <input className="input" type="email" name="email" className="form-control inputLoginFormItem" placeholder="Email" 
+                        <input className="input form-control inputLoginFormItem" type="email" name="email" placeholder="Email" 
                             onChange={updateCredentials} size="40" lenght='30'>
                         </input>
 
-                        <input className="input" type="password" name="password" className="form-control inputLoginFormItem" placeholder="Contraseña" 
+                        <input className="input form-control inputLoginFormItem" type="password" name="password" placeholder="Contraseña" 
                             onChange={updateCredentials} size="40" lenght='30'>
                         </input>
 
@@ -130,7 +130,7 @@ const Login = (props) => {
                 </div>
 
                 <div className="msgError text-center">{msgError}</div>
-                
+
                 <p className="forgot-password text-center">
                     Olvidó la <a href="#">contraseña?</a>
                 </p>

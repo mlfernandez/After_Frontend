@@ -24,14 +24,17 @@
     justify-content: center;
   
     .iconRegisterForm{
-    margin: 1em;
+    margin-top: 0.7em;
+    margin-bottom: 1.5em;
     display: flex;
     flex-direction: column;
-    font-size: 21px;
+    font-size: 18px;
+    
   
     .iconRegisterFormItem {
-      margin-top: 1.1em;
+      margin-top: 1.5em;
       margin-right: -2em;
+
     }
   }
   
@@ -42,7 +45,7 @@
       padding-left: 0.3em;
       
       .inputRegisterFormItem {
-        margin-top: 0.5em;
+        margin-top: 1em;
       }
     }
   }
@@ -93,7 +96,13 @@
 
 .icon {
   height: -webkit-fill-available;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
+
+
 
 
 

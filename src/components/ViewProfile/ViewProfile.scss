@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+
+.tituloDataProfile{
+    margin-bottom: 1em;
+    font-family: 'Antonio', sans-serif;
+    font-size: 28px;
+    text-align: center;
+}
+
+.boxDataProfileUser{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border: 0.2em solid grey;    
+    border-radius: 1em;
+    width: 60vw;
+    font-size: 0.8em;
+    background-color: black;
+    margin-bottom: 8em;
+    padding: 1em;
+    height: fit-content;
+
+
+}
+
+.infoUser1{
+    height: fit-content;
+    width: 60vh;  
+    display: flex;
+    align-items:center;
+    flex-direction: column;  
+    border-right: 0.2em solid grey;   
+    background-color: black; 
+    border-radius: 1em 0 0 1em;
+    justify-content: space-evenly;
+    padding-right: 0.5em;
+}
+
+
+.infoUser2{
+    height: fit-content;
+    width: 60vh;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;  
+    background-color: black; 
+    padding-left: 0.5em;
+  
+}
+
+.fotoUserProfile{
+    height: fit-content;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+} 
+
+.inputBaseUser{
+    width: 50vh;
+    height: 36px;
+    border-radius: 4px;
+    padding-left: 12px;
+    font-size: 18px;
+    font-weight: normal;
+    font-family: Akzidenz, "‘Helvetica Neue’", Helvetica, Arial, sans-serif;
+    border: 1px solid rgb(184, 196, 194);
+    transition: border-color 150ms ease-in-out 1s;
+    z-index: 1;
+    outline: none;
+    color: rgb(33, 49, 60);
+    background-color: rgb(255, 255, 255);
+    padding-right: 12px;
+    margin-bottom: 0.4em;
+    display: flex;
+}
+
+.inputBlank {
+
+    width: 50vh;
+    height: 36px;
+    border-radius: 4px;
+    padding-left: 12px;
+    font-family: Akzidenz, "‘Helvetica Neue’", Helvetica, Arial, sans-serif;
+    border: 1px solid black;
+    padding-right: 12px;
+    margin-bottom: 0.4em;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+p {
+    font-size: 20px;
+}
+
+.img {
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    padding-right: 2em;
+    width: 15vw;
+  
+}
+
+.botonEdit{
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    padding-right: 2em;
+    height: 20vh;
+    width: 20vw; 
+    display: flex;
+}
+
+.sendButtonEdit {
+    position: relative;
+    background: #303036;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    margin-top: 6em;
+    height: 5vh;
+    width: 10vw; 
+
+    &:hover {
+        background: #e15554;
+        transition: 0.2s;
+      }
+
+  }
+
+
+#foto{
+    height: 20vh;
+    width: 20vw; 
+    border-radius: 1.5em; 
+}
