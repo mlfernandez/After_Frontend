@@ -6,8 +6,7 @@ import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/js/dist/dropdown';
 import './Navbar.scss';
 import { connect } from 'react-redux';
-import { LOGOUT, GETPROFILE } from '../../redux/types';
-/* import { LOGOUT, LOGOUTTIPODATOS, PROFILE, DELETE, FAQ} from '../../redux/types'; */
+import { LOGOUT, GETPROFILE, GETPROJECT, GETCATEGORY, GETROLE, GETUSER } from '../../redux/types';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -55,10 +54,31 @@ const Navbar = (props) => {
 
             break;
 
-      default:
+        case "getproject":
+            props.dispatch({ type: GETPROJECT, payload: info });
 
-        break;
-    }
+            break;
+
+        case "getcategory":
+            props.dispatch({ type: GETCATEGORY, payload: info });
+
+            break;
+
+        case "getrole":
+            props.dispatch({ type: GETROLE, payload: info });
+
+            break;
+
+        case "getuser":
+            props.dispatch({ type: GETUSER, payload: info });
+
+            break;
+
+
+        default:
+
+            break;
+        }
   };
 
   
@@ -109,7 +129,7 @@ const Navbar = (props) => {
     // vista navbar usuario logeado
   } else if ((props.credentials?.user?.profile === "user" )) {
     return (
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm p-3 mb-5 rounded">
       <div class="container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -166,9 +186,11 @@ const Navbar = (props) => {
   </nav>
 
         )
+
+        // Vista administrador
     } else if (props.credentials?.user?.profile === "admin"){
         return (
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm p-3 mb-5 rounded">
           <div class="container-fluid">
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
@@ -201,7 +223,7 @@ const Navbar = (props) => {
                   </ul>
                       <form class="d-flex justify-content-end">
                           <button class="btn btn-outline-dark me-2 mlf-btn-color" type="button"  onClick={()=>logOut()} to="/">Cerrar sesión</button>
-                          <button class="btn btn-outline-dark me-2 mlf-btn-color" type="button"  onClick={()=> cambiaDatos('projects')} >Mis proyectos</button>
+             {/*              <button class="btn btn-outline-dark me-2 mlf-btn-color" type="button"  onClick={()=> cambiaDatos('projects')} >Mis proyectos</button> */}
                           
                       </form>
               </div>
@@ -215,8 +237,10 @@ const Navbar = (props) => {
                           </a>
                           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                               <li><a class="dropdown-item" onClick={() => cambiaDatos("getprofile")}>Mis datos</a></li>
-                              <li><a class="dropdown-item" href="#">Crear Proyectos</a></li>
-                              <li><a class="dropdown-item" href="#">Ver usuarios</a></li>
+                              <li><a class="dropdown-item" onClick={() => cambiaDatos("getproject")}>CRUD proyectos</a></li>
+                              <li><a class="dropdown-item" onClick={() => cambiaDatos("getcategory")}>CRUD categorías</a></li>
+                              <li><a class="dropdown-item" onClick={() => cambiaDatos("getrole")}>CRUD roles</a></li>
+                              <li><a class="dropdown-item" onClick={() => cambiaDatos("getuser")}>CRUD usuarios</a></li>
                           </ul>
                       </li>
                   </ul>    

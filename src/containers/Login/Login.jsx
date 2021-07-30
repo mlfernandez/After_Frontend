@@ -78,11 +78,14 @@ const Login = (props) => {
                 history.push("/datacontainer");
 
             } catch (err) {
-                   if (err.response.data.message.includes("La cuenta no está activa")) {   
-                    console.log("la cuenta no esta activa")
+                    
+                   if (err.response.data.message.includes("La cuenta no está activa.")) {   
+                       
+                    console.log(err.response.data.message)
                     notification.warning({message:'Atencion!', description: "La cuenta no está activa. Por favor, revisa tu correo electrónico y activa tu cuenta."});
+
                     } else { 
-                    console.log("usuario no encontrado")
+                    
                     notification.warning({message:'Atencion.',description: "Usuario o password incorrecto."});              
                     }
             

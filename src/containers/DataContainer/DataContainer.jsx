@@ -15,6 +15,24 @@ const DataContainer = (props) => {
             case 'getprofile':
 
                 return <ViewProfile/>
+
+            /* case 'getproject':
+
+                return 
+        
+            case 'getcategory':
+
+                return 
+            
+                                
+            case 'getrole':
+
+                return 
+                
+                             
+            case 'getuser':
+
+                return  */
     
                 
             default:
@@ -27,7 +45,7 @@ const DataContainer = (props) => {
     return (
         <div>
 
-            <div className="boxPerfilUsuario">
+            <div>
             
                 <div className="datos">
                     {changeView()}

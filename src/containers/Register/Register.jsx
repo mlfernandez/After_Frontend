@@ -61,25 +61,25 @@ const Register = () => {
 
             case 'lastName':   
                 if(datosUser.lastName.length < 2){
-                    setErrors({...errors, elastName: 'El campo Apellido no puede estar vacío.'});
+                    setErrors({...errors, eLastName: 'El campo Apellido no puede estar vacío.'});
                 }else if (datosUser.lastName.length < 2){
-                    setErrors({...errors, elastName: 'El apellido debe de tener al menos 2 caracteres'});
+                    setErrors({...errors, eLastName: 'El apellido debe de tener al menos 2 caracteres'});
                 }else if (! /^[a-z ,.'-]+$/i.test(datosUser.lastName) ) {
-                    setErrors({...errors, elastName: 'Introduce el formato de apellido valido'});     
+                    setErrors({...errors, eLastName: 'Introduce el formato de apellido valido'});     
                 }else{
-                    setErrors({...errors, elastName: ''});
+                    setErrors({...errors, eLastName: ''});
                 }  
             break;
 
             case 'lastName2':    
                 if(datosUser.lastName2.length < 2){
-                    setErrors({...errors, elastName2: 'El campo Apellido no puede estar vacío.'});
+                    setErrors({...errors, eLastName2: 'El campo Apellido no puede estar vacío.'});
                 }else if (datosUser.lastName2.length < 2){
                     setErrors({...errors, eLast_name2: 'El apellido debe de tener al menos 2 caracteres'});
                 }else if (! /^[a-z ,.'-]+$/i.test(datosUser.lastName2) ) {
-                    setErrors({...errors, elastName2: 'Introduce el formato de apellido valido'});     
+                    setErrors({...errors, eLastName2: 'Introduce el formato de apellido valido'});     
                 }else{
-                    setErrors({...errors, elastName2: ''});
+                    setErrors({...errors, eLastName2: ''});
                    }   
             break;
 

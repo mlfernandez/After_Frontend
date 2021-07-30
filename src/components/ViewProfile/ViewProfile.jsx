@@ -15,25 +15,22 @@ const DataProfile = (props) => {
         const [profile, setProfile] = useState([]); 
         const [datosUser, setDatosUser] = useState(
             {
-                creditCardNumber: props.credentials.user.creditCardNumber,
-                creditCardName: props.credentials.user.creditCardName,
-                creditCardExpDate: props.credentials.user.creditCardExpDate,
-                creditCardSecureCodeNumber: props.credentials.user.creditCardSecureCodeNumber,
+                name : props.credentials.user.name,
+                lastName: props.credentials.user.lastName,
+                lastName2: props.credentials.user.lastName2,
+                email: props.credentials.user.email,
+                password: props.credentials.user.password,
+                password2: props.credentials.user.password2,
         });        
 
 
     const [errors, setErrors] = useState({
         eName : '',
-        eLast_name1: '',
-        eLast_name2: '',
+        eLastName: '',
+        eLastName2: '',
         eEmail: '',
         ePassword: '',
-        eBirthday: '',
-        eDni: '',
-        eCreditCardNumber: '',
-        eCreditCardName: '',
-        eCreditCardExpDate: '',
-        eCreditCardSecureCodeNumber: '',
+        ePassword2: '',
         
     });
 
@@ -63,56 +60,85 @@ const DataProfile = (props) => {
     const checkError = (arg) => {
         switch (arg){
 
-            case 'creditCardName':
-                
-                if(datosUser.creditCardName.length < 1){
-                    setErrors({...errors, eCreditCardName: 'El campo nombre no puede estar vacío.'});
-                }else if(datosUser.creditCardName.length < 2){
-                    setErrors({...errors, eCreditCardName: 'El nombre debe de tener al menos 2 caracteres'});
+            case 'name':
+                if(datosUser.name.length < 2){
+                    setErrors({...errors, eName: 'El campo nombre no puede estar vacío.'});
+                }else if(datosUser.name.length < 2){
+                    setErrors({...errors, eName: 'El nombre debe de tener al menos 2 caracteres'});
                 }else if (! /^[a-z ,.'-]+$/i.test(datosUser.name) ) {
-                    setErrors({...errors, eCreditCardName: 'Introduce el formato de nombre valido'}); 
+                    setErrors({...errors, eName: 'Introduce el formato de nombre valido'}); 
                 }else{
-                    setErrors({...errors, eCreditCardName: ''});
+                    setErrors({...errors, eName: ''});
                 }
             break;
 
-            case 'creditCardNumber':
-                
-                if(datosUser.creditCardNumber.length < 13){
-                    setErrors({...errors, eCreditCardNumber: 'No es correcto.'});
-                }else if(datosUser.creditCardNumber.length > 17 ){
-                    setErrors({...errors, eCreditCardNumber: 'No es un numero de tarjeta valido'});
-                }else if (! /^[0-9]+$/i.test(datosUser.creditCardNumber) ) {
-                    setErrors({...errors, eCreditCardNumber: 'Introduce el formato de nombre valido'}); 
+            case 'lastName':   
+                if(datosUser.lastName.length < 2){
+                    setErrors({...errors, eLastName: 'El campo Apellido no puede estar vacío.'});
+                }else if (datosUser.lastName.length < 2){
+                    setErrors({...errors, eLastName: 'El apellido debe de tener al menos 2 caracteres'});
+                }else if (! /^[a-z ,.'-]+$/i.test(datosUser.lastName) ) {
+                    setErrors({...errors, eLastName: 'Introduce el formato de apellido valido'});     
                 }else{
-                    setErrors({...errors, eCreditCardNumber: ''});
-                }
+                    setErrors({...errors, eLastName: ''});
+                }  
             break;
 
-            case 'creditCardExpDate':
-
-                let cce = moment(datosUser.creditCardExpDate).format('MM/YYYY')
-                
-                if (cce < Date.now()){
-                    setErrors({...errors, eCreditCardExpDate: 'La tarjeta esta vencida'});
-                }else {
-                    setErrors({...errors, eCreditCardExpDate: ''});
-                }
-
-            break;
-
-            case 'creditCardSecureCodeNumber':
-                
-                if(datosUser.creditCardSecureCodeNumber.length < 1){
-                    setErrors({...errors, eCreditCardSecureCodeNumber: 'No es correcto.'});
-                }else if(datosUser.creditCardSecureCodeNumber.length > 5){
-                    setErrors({...errors, eCreditCardSecureCodeNumber: 'No es correcto'});
-                }else if (! /^[0-9]+$/i.test(datosUser.creditCardSecureCodeNumber) ) {
-                    setErrors({...errors, eCreditCardSecureCodeNumber: 'Introduce el formato de nombre valido'}); 
+            case 'lastName2':    
+                if(datosUser.lastName2.length < 2){
+                    setErrors({...errors, eLastName2: 'El campo Apellido no puede estar vacío.'});
+                }else if (datosUser.lastName2.length < 2){
+                    setErrors({...errors, eLast_name2: 'El apellido debe de tener al menos 2 caracteres'});
+                }else if (! /^[a-z ,.'-]+$/i.test(datosUser.lastName2) ) {
+                    setErrors({...errors, eLastName2: 'Introduce el formato de apellido valido'});     
                 }else{
-                    setErrors({...errors, eCreditCardSecureCodeNumber: ''});
+                    setErrors({...errors, eLastName2: ''});
+                   }   
+            break;
+
+            case 'email':
+                if(datosUser.email.length < 1){
+                    setErrors({...errors, eEmail: 'El campo email no puede estar vacío.'});
+                }else if (datosUser.email.length < 4){
+                    setErrors({...errors, eEmail: 'El email debe de tener al menos 4 caracteres'});
+                }else if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(datosUser.email) ) {
+                    setErrors({...errors, eEmail: 'Introduce el formato de email valido ejemplo@ejemplo.com'});                    
+                }else{
+                    setErrors({...errors, eEmail: ''});
+                }
+                
+            break;
+
+            case 'password':
+
+            // cuando finalize el modo prueba activar password caracteres y simbolos y largo de 8
+            // if (! /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm.test(datosUser.password)){
+                    // setErrors({...errors, ePassword: 'La contraseña debe tener al menos 8 caracteres'});
+       
+                if(datosUser.password.length < 1){
+                    setErrors({...errors, ePassword: 'El campo password no puede estar vacío.'});
+                }else if (datosUser.password.length < 6){
+                    setErrors({...errors, ePassword: 'El password debe de tener al menos 6 caracteres'});
+                }else if (!/^\+?[0-9]{6}/.test(datosUser.password) ) {
+                    setErrors({...errors, ePassword: 'Introduce el password valido'}); 
+                }else{
+                    setErrors({...errors, ePassword: ''});
+                }
+                
+            break;
+
+            case 'password2':
+                if (datosUser.password !== datosUser.password2){
+                    setErrors({...errors, ePassword2: 'Las contraseñas no coinciden.'});
+                }else{
+                    setErrors({...errors, ePassword2: ''});
                 }
             break;
+
+            default:
+
+            break;
+
 
         }
     }
@@ -123,10 +149,12 @@ const DataProfile = (props) => {
       
         let token = props.credentials.token;
         let idUser = props.credentials.user.id;
-        let creditCardNumber = datosUser.creditCardNumber;
-        let creditCardName = datosUser.creditCardName;
-        let creditCardExpDate = datosUser.creditCardExpDate;
-        let creditCardSecureCodeNumber = datosUser.creditCardSecureCodeNumber;
+        let name = datosUser.name;
+        let lastName = datosUser.lastName;
+        let lastName2 = datosUser.lastName2;
+        let email = datosUser.email;
+        let password = datosUser.password;
+        let password2 = datosUser.password2;
 
 
         console.log(idUser, "estoy en saveData")
@@ -134,14 +162,16 @@ const DataProfile = (props) => {
         var body = {
             id: idUser,
             idUser : idUser,
-            creditCardNumber: creditCardNumber,
-            creditCardName: creditCardName,
-            creditCardExpDate: creditCardExpDate,
-            creditCardSecureCodeNumber: creditCardSecureCodeNumber,
+            name : name,
+            lastName: lastName,
+            lastName2: lastName2,
+            email: email,
+            password: password,
+            password2: password2,
             
         }
 
-        let res = await axios.post('https://movieapp-mlf.herokuapp.com/users/update',body,{headers:{'authorization':'Bearer ' + token}});
+        let res = await axios.post('http://localhost:3006/user',body,{headers:{'authorization':'Bearer ' + token}});
         console.log(res.data)    
 
 
@@ -167,10 +197,25 @@ const DataProfile = (props) => {
     }
 
     if (profile === "vistaLectura") {
-        console.log("hola")
+    
         return (
             
             <div>
+
+{/*                 <div class="row row-cols-2 row-cols-lg-3">
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                    <div class="col-4 col-lg-2">Column</div>
+                    <div class="col-4 col-lg-2">Column</div>
+                    <div class="col-4 col-lg-2">Column</div>
+                    <div class="col-4 col-lg-2">Column</div>
+                    <div class="col-4 col-lg-2">Column</div>
+                    <div class="col-4 col-lg-2">Column</div>
+                </div> */}
                 <div className="tituloDataProfile">Perfil del usuario</div>
                 <div className="boxDataProfileUser">
 
