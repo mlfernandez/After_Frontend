@@ -6,6 +6,9 @@ import { UPDATE } from '../../redux/types'
 import { Input, notification } from 'antd';
 import './ViewProfile.scss';
 import moment from 'moment';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
+import PhotoProfile from '../../images/profilePhoto.png'
 
 
 
@@ -36,15 +39,15 @@ const DataProfile = (props) => {
 
 
     useEffect(() => {
-        setProfile("vistaLectura");
+    /*     setProfile("vistaLectura"); */
        
       }, []);
 
     let user = props.credentials.user;   
 
-    const changeState = (tipoVista) => {        
+/*     const changeState = (tipoVista) => {        
         setProfile(tipoVista);
-    }
+    } */
 
 
 
@@ -144,7 +147,7 @@ const DataProfile = (props) => {
     }
 
 
-    const saveData = async (tipoVista) => {   
+    const saveData = async () => {   
         try { 
       
         let token = props.credentials.token;
@@ -171,7 +174,9 @@ const DataProfile = (props) => {
             
         }
 
-        let res = await axios.post('http://localhost:3006/user',body,{headers:{'authorization':'Bearer ' + token}});
+        console.log(body)
+
+        let res = await axios.post('http://localhost:3006/user/update', body,{headers:{'authorization':'Bearer ' + token}});
         console.log(res.data)    
 
 
@@ -186,7 +191,7 @@ const DataProfile = (props) => {
    
            
 
-                setProfile(tipoVista);
+       /*          setProfile(tipoVista); */
 
                 notification.success({message:'Atencion.',description: "Datos actualizados correctamente."}); 
             
@@ -196,100 +201,90 @@ const DataProfile = (props) => {
             }
     }
 
-    if (profile === "vistaLectura") {
+ /*    if (profile === "vistaLectura") { */
     
         return (
             
-            <div>
+            <div class="container">
 
-{/*                 <div class="row row-cols-2 row-cols-lg-3">
-                    <div class="col">Column</div>
-                    <div class="col">Column</div>
-                    <div class="col">Column</div>
-                    <div class="col">Column</div>
-                    <div class="col">Column</div>
-                    <div class="col">Column</div>
-                    <div class="col-4 col-lg-2">Column</div>
-                    <div class="col-4 col-lg-2">Column</div>
-                    <div class="col-4 col-lg-2">Column</div>
-                    <div class="col-4 col-lg-2">Column</div>
-                    <div class="col-4 col-lg-2">Column</div>
-                    <div class="col-4 col-lg-2">Column</div>
-                </div> */}
-                <div className="tituloDataProfile">Perfil del usuario</div>
-                <div className="boxDataProfileUser">
-
-                    <div className="infoUser1">
-                        <div className="fotoUserProfile"><img className="img"  alt="Profile photo" /></div>
-                        <p>Nombre: <input className="inputBaseUser"  readonly="readonly" type="text" name="name" value={user.name} size="34" lenght='30'></input></p>
-                        <p>Primer apellido: <input className="inputBaseUser"  readonly="readonly" type="text" name="lastName1"  value={user.last_name1} size="34" lenght='30' ></input></p>
-                        <p>Segundo apellido: <input className="inputBaseUser"  readonly="readonly" type="text" name="lastName2"  value={user.last_name2} size="34" lenght='30'></input></p>
-                        <p>Email: <input className="inputBaseUser"  readonly="readonly" type="text" name="email"  value={user.email} size="34" lenght='30'></input></p>
-                        <p>Password: <input className="inputBaseUser"  readonly="readonly" type="password" name="password"  value="************" size="34" lenght='8'></input></p>
-                        <p>Fecha de nacimiento: <input className="inputBaseUser"  readonly="readonly" type="text" name="birthday" value={moment(user.birthday).format('L')} ></input></p>   
+                <div class="row row-cols-2">
+                    <div class="col"><h5>Hola {user.name}</h5></div>
+                    <div class="col">
+                        <div><h5>Este es tu perfil público</h5></div>
+                        <div className="tituloDataProfile">Añade información sobre ti</div>
                     </div>
-
-
-                    <div className="infoUser2">
+                    <div class="col">
+                        <img className="img-thumbnail" alt="photo" src={PhotoProfile} width="30%"></img>
+                    </div>
+                    <div class="col">Información básica:
                     
-                        <div className="botonEdit"><div className="sendButtonEdit" onClick={(()=>changeState("vistaEdicion"))}>Editar</div></div>
-                        <div className="inputBlank"><p>Datos de pago se pueden editar.</p></div>
-                        <p>Número de tarjeta: <input className="inputBaseUser"  readonly="readonly" type="text" name="creditCardNumber"  value={user.creditCardNumber} size="34" lenght='30'></input></p>
-                        <p>Nombre del titular: <input className="inputBaseUser"  readonly="readonly" type="text" name="creditCardName"  value={user.creditCardName} size="34" lenght='30'></input></p>
-                        <p>Fecha de expiración: <input className="inputBaseUser"  readonly="readonly" type="text" name="creditCardExpDate"  value={moment(user.creditCardExpDate).format('L')} size="34" lenght='30'></input></p>
-                        <p>Código de seguridad: <input className="inputBaseUser"  readonly="readonly" type="password" name="creditCardSecureCodeNumber" value="************" size="34" lenght='30'></input></p>
-                        <p>DNI: <input className="inputBaseUser"  readonly="readonly" type="text" name="dni"  value={user.dni} size="34" maxlenght='9' ></input></p>
+                        <div className = "loginForm"> 
 
+                            <div className="inputLogin">
+                        
+                                <div className = "form-group inputLoginForm">
+
+                                    <input className="input form-control inputLoginFormItem" type="text" name="name" placeholder={user.name} 
+                                        onChange={updateFormulario} onBlur={()=>checkError("name")}
+                                        size="40" lenght='30'>
+                                    </input>
+
+                                    <div>{errors.eName}</div>
+
+                                    <input className="input form-control inputLoginFormItem" type="text" name="lastName"  placeholder={user.lastName} 
+                                        onChange={updateFormulario} onBlur={()=>checkError("lastName")}
+                                        size="40" lenght='30'>
+                                    </input>
+
+                                    <div>{errors.eLastName}</div>
+
+                                    <input className="input form-control inputLoginFormItem" type="text" name="lastName2"  placeholder={user.lastName2} 
+                                        onChange={updateFormulario} onBlur={()=>checkError("lastName2")}
+                                        size="40" lenght='30'>
+                                    </input>
+
+                                    <div>{errors.eLastName2}</div>
+
+                                    <input className="input form-control inputLoginFormItem" type="text" name="email"  placeholder={user.email} 
+                                        onChange={updateFormulario} onBlur={()=>checkError("email")}
+                                        size="40" lenght='30'>
+                                    </input>
+
+                                    <div>{errors.eEmail}</div>
+
+                                    <input className="input form-control inputLoginFormItem" type="password" name="password"  placeholder="************" 
+                                        onChange={updateFormulario} onBlur={()=>checkError("password")}
+                                        size="34" lenght='8'>
+                                    </input>
+
+                                    <div>{errors.ePassword}</div>
+
+                                    <input className="input form-control inputLoginFormItem" type="password" name="password2"  placeholder="************" 
+                                        onChange={updateFormulario} onBlur={()=>checkError("password2")}
+                                        size="34" lenght='8'>
+                                    </input>
+
+                                    <div>{errors.ePassword2}</div>
+
+                                    </div>
+
+                                </div>
+                        
+                        </div>
+                    
                     </div>
+                    <div class="col">Column1</div>
 
+                    <div class="col">Column2
+                        <div className="mlf-submit-btn">
+                            <button type="submit" className="btn btn-primary btn-block mlf-btn-yellow" onClick={()=>saveData()}>Guardar</button>
+                        </div>
+                    </div>
                 </div>
-
-            </div>
-        )
-    } else {
-        return (
-            <div>
-                <div className="tituloDataProfile"><h1>Editar datos del usuario</h1></div>
-                <div className="boxDataProfileUser">
-
-                    <div className="infoUser1">
-                        <div className="fotoUserProfile"><img className="img" alt="Profile photo" /></div>
-                        <p>Nombre: <input className="inputBaseUser"  readonly="readonly" type="text" name="name" value={user.name} size="34" lenght='30'></input></p>
-                        <p>Primer apellido: <input className="inputBaseUser"  readonly="readonly" type="text" name="lastName1"  value={user.last_name1} size="34" lenght='30' ></input></p>
-                        <p>Segundo apellido: <input className="inputBaseUser"  readonly="readonly" type="text" name="lastName2"  value={user.last_name2} size="34" lenght='30'></input></p>
-                        <p>Email: <input className="inputBaseUser"  readonly="readonly" type="text" name="email"  value={user.email} size="34" lenght='30'></input></p>
-                        <p>Password: <input className="inputBaseUser"  readonly="readonly" type="password" name="password"  value="************" size="34" lenght='8'></input></p>
-                        <p>Fecha de nacimiento: <input className="inputBaseUser"  readonly="readonly" type="text" name="birthday" value={moment(user.birthday).format('L')} ></input></p>   
-                    </div>
-    
-
-                    <div className="infoUser2">
-                        <div className="botonEdit"><div className="sendButtonEdit"  onClick={(()=>saveData("vistaLectura"))}>Guardar</div></div>
-                        <div className="inputBlank"><p>Datos de pago se pueden editar.</p></div>
-                        <p>Número de tarjeta:  </p>
-                        <input className="inputBaseUser"   type="text" name="creditCardNumber" onChange={updateFormulario} onBlur={()=>checkError("creditCardNumber")} placeholder={user.creditCardNumber} size="34" lenght='30'></input>
-                        <div>{errors.eCreditCardNumber}</div>
-                        <p>Nombre del titular: </p>
-                        <input className="inputBaseUser"   type="text" name="creditCardName"  onChange={updateFormulario} onBlur={()=>checkError("creditCardName")} placeholder={user.creditCardName} size="34" lenght='30'></input>
-                        <div>{errors.eCreditCardName}</div>
-                        <p>Fecha de expiración: </p>
-                        <input className="inputBaseUser"  type="text" name="creditCardExpDate" onChange={updateFormulario} onBlur={()=>checkError("creditCardExpDate")} placeholder={moment(user.creditCardExpDate).format('L')} size="34" lenght='30'></input>
-                        <div>{errors.eCreditCardExpDate}</div>
-                        <p>Código de seguridad: </p>
-                        <input className="inputBaseUser"   type="password" name="creditCardSecureCodeNumber" onChange={updateFormulario} onBlur={()=>checkError("creditCardSecureCodeNumber")}  placeholder="************" size="34" lenght='30'></input>
-                        <div>{errors.eCreditCardSecureCodeNumber}</div>
-                        <p>DNI: </p>
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="dni"  placeholder={props.credentials.user.dni} size="34" maxlenght='9' ></input>
-        
-
-                    </div>
-
-                </div>
-
             </div>
         )
     }
-}
+
 
 export default connect((state)=>({
     credentials:state.credentials,
