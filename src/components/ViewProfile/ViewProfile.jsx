@@ -201,86 +201,87 @@ const DataProfile = (props) => {
             }
     }
 
- /*    if (profile === "vistaLectura") { */
     
         return (
             
             <div class="container">
 
                 <div class="row row-cols-2">
-                    <div class="col"><h5>Hola {user.name}</h5></div>
-                    <div class="col">
-                        <div><h5>Este es tu perfil público</h5></div>
-                        <div className="tituloDataProfile">Añade información sobre ti</div>
+
+                    <div class="col mlf-photoProfile">
+                        <img className="img-thumbnail mlf-photoProfile" alt="photo" src={PhotoProfile} width="30%"></img>
+                        <div class="col">Boton Subir foto</div>
                     </div>
                     <div class="col">
-                        <img className="img-thumbnail" alt="photo" src={PhotoProfile} width="30%"></img>
-                    </div>
-                    <div class="col">Información básica:
+                        <div class="viewProfileHi">¡Hola {user.name}!</div>
+                        <br />
+                        <div><h5>Este es tu perfil público,</h5></div>
+                        <div><h5>puedes añadir o actualizar información sobre ti.</h5></div>
+                    </div>  
+                </div>
+
+                <div class="row row-cols-1">
                     
-                        <div className = "loginForm"> 
+                        <div className = "viewProfileForm"> 
 
-                            <div className="inputLogin">
+                            <div className="inputViewProfile">
                         
-                                <div className = "form-group inputLoginForm">
+                                <div className = "form-group inputViewProfileForm">
 
-                                    <input className="input form-control inputLoginFormItem" type="text" name="name" placeholder={user.name} 
+                                    <input className="input form-control inputViewProfileFormItem" type="text" name="name" placeholder={user.name} 
                                         onChange={updateFormulario} onBlur={()=>checkError("name")}
                                         size="40" lenght='30'>
                                     </input>
 
-                                    <div>{errors.eName}</div>
+                                    <div className="msgError text-center" mlf-text-small>{errors.eName}</div>
 
-                                    <input className="input form-control inputLoginFormItem" type="text" name="lastName"  placeholder={user.lastName} 
+                                    <input className="input form-control inputViewProfileFormItem" type="text" name="lastName"  placeholder={user.lastName} 
                                         onChange={updateFormulario} onBlur={()=>checkError("lastName")}
                                         size="40" lenght='30'>
                                     </input>
 
-                                    <div>{errors.eLastName}</div>
+                                    <div className="msgError text-center" mlf-text-small>{errors.eLastName}</div>
 
-                                    <input className="input form-control inputLoginFormItem" type="text" name="lastName2"  placeholder={user.lastName2} 
+                                    <input className="input form-control inputViewProfileFormItem" type="text" name="lastName2"  placeholder={user.lastName2} 
                                         onChange={updateFormulario} onBlur={()=>checkError("lastName2")}
                                         size="40" lenght='30'>
                                     </input>
 
-                                    <div>{errors.eLastName2}</div>
-
-                                    <input className="input form-control inputLoginFormItem" type="text" name="email"  placeholder={user.email} 
+                                    <div className="msgError text-center" mlf-text-small>{errors.eLastName2}</div>
+                                    <input className="input form-control inputViewProfileFormItem" type="text" name="email"  placeholder={user.email} 
                                         onChange={updateFormulario} onBlur={()=>checkError("email")}
                                         size="40" lenght='30'>
                                     </input>
 
-                                    <div>{errors.eEmail}</div>
+                                    <div className="msgError text-center" mlf-text-small>{errors.eEmail}</div>
 
-                                    <input className="input form-control inputLoginFormItem" type="password" name="password"  placeholder="************" 
+                                    <input className="input form-control inputViewProfileFormItem" type="password" name="password"  placeholder="************" 
                                         onChange={updateFormulario} onBlur={()=>checkError("password")}
                                         size="34" lenght='8'>
                                     </input>
 
-                                    <div>{errors.ePassword}</div>
+                                    <div className="msgError text-center" mlf-text-small>{errors.ePassword}</div>
+     
 
-                                    <input className="input form-control inputLoginFormItem" type="password" name="password2"  placeholder="************" 
+                                    <input className="input form-control inputViewProfileFormItem" type="password" name="password2"  placeholder="************" 
                                         onChange={updateFormulario} onBlur={()=>checkError("password2")}
                                         size="34" lenght='8'>
                                     </input>
-
-                                    <div>{errors.ePassword2}</div>
+                                    
+                                    <div className="msgError text-center" mlf-text-small>{errors.ePassword2}</div>
+                                    
 
                                     </div>
 
                                 </div>
                         
                         </div>
-                    
-                    </div>
-                    <div class="col">Column1</div>
 
-                    <div class="col">Column2
                         <div className="mlf-submit-btn">
                             <button type="submit" className="btn btn-primary btn-block mlf-btn-yellow" onClick={()=>saveData()}>Guardar</button>
                         </div>
+                    
                     </div>
-                </div>
             </div>
         )
     }
