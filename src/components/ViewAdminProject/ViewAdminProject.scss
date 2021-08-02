@@ -1,0 +1,89 @@
+.viewProyectHi {
+    font-size: 28px !important;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  
+  }
+  
+  
+    
+      .inputViewProfileForm{
+        margin: 1em;
+        flex-direction: column;
+        font-size: 20px;
+        padding-left: 0.3em;
+        align-items: center !important;
+        justify-content: center !important;
+        display: flex !important;
+  
+        
+        .inputViewProfileFormItem {
+          margin-top: 0.5em;
+          width: 40em !important;
+  
+          
+        }
+      }
+    
+    
+    
+    .mlf-submit-btn {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1em;
+        align-items: center !important;
+        justify-content: center !important;
+    
+        .mlf-btn-yellow{
+          background-color: #F0EC57 !important;
+          color: black !important;
+          width: 15em !important;
+    
+    
+          &:hover {
+            background-color: black !important;
+            border-color: black !important;
+            color: white !important;
+    
+          }
+        }
+    }
+    
+    .msgError {
+      text-align: center;
+      color: red;
+      
+    
+    }
+    
+    .forgot-password,
+    .forgot-password a {
+      text-align: right;
+      font-size: 13px;
+      padding-top: 10px;
+      color: #7f7d7d;
+      margin: 0;
+    }
+    
+    .forgot-password a {
+      color: #167bff;
+    }
+    
+    .mlf-photoProfile {
+  
+      align-items: center !important;
+      justify-content: center !important;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1em;
+  
+    }
+  
+    
+    .form-control:focus {
+      border-color: #F0EC57;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #F0EC57;
+    } 

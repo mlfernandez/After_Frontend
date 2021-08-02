@@ -191,7 +191,7 @@ const DataProfile = (props) => {
    
            
 
-       /*          setProfile(tipoVista); */
+    
 
                 notification.success({message:'Atencion.',description: "Datos actualizados correctamente."}); 
             
@@ -233,34 +233,34 @@ const DataProfile = (props) => {
                                         size="40" lenght='30'>
                                     </input>
 
-                                    <div className="msgError text-center" mlf-text-small>{errors.eName}</div>
+                                    <div className="msgError text-center mlf-text-small">{errors.eName}</div>
 
                                     <input className="input form-control inputViewProfileFormItem" type="text" name="lastName"  placeholder={user.lastName} 
                                         onChange={updateFormulario} onBlur={()=>checkError("lastName")}
                                         size="40" lenght='30'>
                                     </input>
 
-                                    <div className="msgError text-center" mlf-text-small>{errors.eLastName}</div>
+                                    <div className="msgError text-center mlf-text-small">{errors.eLastName}</div>
 
                                     <input className="input form-control inputViewProfileFormItem" type="text" name="lastName2"  placeholder={user.lastName2} 
                                         onChange={updateFormulario} onBlur={()=>checkError("lastName2")}
                                         size="40" lenght='30'>
                                     </input>
 
-                                    <div className="msgError text-center" mlf-text-small>{errors.eLastName2}</div>
+                                    <div className="msgError text-center mlf-text-small">{errors.eLastName2}</div>
                                     <input className="input form-control inputViewProfileFormItem" type="text" name="email"  placeholder={user.email} 
                                         onChange={updateFormulario} onBlur={()=>checkError("email")}
                                         size="40" lenght='30'>
                                     </input>
 
-                                    <div className="msgError text-center" mlf-text-small>{errors.eEmail}</div>
+                                    <div className="msgError text-center mlf-text-small">{errors.eEmail}</div>
 
                                     <input className="input form-control inputViewProfileFormItem" type="password" name="password"  placeholder="************" 
                                         onChange={updateFormulario} onBlur={()=>checkError("password")}
                                         size="34" lenght='8'>
                                     </input>
 
-                                    <div className="msgError text-center" mlf-text-small>{errors.ePassword}</div>
+                                    <div className="msgError text-center mlf-text-small">{errors.ePassword}</div>
      
 
                                     <input className="input form-control inputViewProfileFormItem" type="password" name="password2"  placeholder="************" 
@@ -268,7 +268,7 @@ const DataProfile = (props) => {
                                         size="34" lenght='8'>
                                     </input>
                                     
-                                    <div className="msgError text-center" mlf-text-small>{errors.ePassword2}</div>
+                                    <div className="msgError text-center mlf-text-small">{errors.ePassword2}</div>
                                     
 
                                     </div>

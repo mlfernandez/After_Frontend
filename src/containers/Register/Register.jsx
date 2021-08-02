@@ -178,70 +178,70 @@ const Register = () => {
 
     return (
 
-<div className = "registerContainer">
+        <div className = "registerContainer">
 
-    <h5 className="registerTitle">Comienza a ganar experiencia, ¡regístrate!</h5>
+            <h5 className="registerTitle">Comienza a ganar experiencia, ¡regístrate!</h5>
 
-    <div className = "registerForm"> 
+            <div className = "registerForm"> 
 
-        <div className="inputRegister">
+                <div className="inputRegister">
 
-                <div className="iconRegisterForm">
-                    <div className="icon"><FontAwesomeIcon className="iconRegisterFormItem" icon={faUser}/> {/* name */}</div>
+                    <div className="iconRegisterForm">
+                        <div className="icon"><FontAwesomeIcon className="iconRegisterFormItem" icon={faUser}/> {/* name */}</div>
+                        
+                        <div className="icon"><FontAwesomeIcon className="iconRegisterFormItem" icon={faAt}/> {/* email */}</div>
+                        
+                        <div className="icon"><FontAwesomeIcon className="iconRegisterFormItem" icon={faLock}/> {/* password */}</div>
+                        
+                        <div className="icon"><FontAwesomeIcon className="iconRegisterFormItem" icon={faLock}/> {/* password2 */}</div>
+                        
+                    </div>
                     
-                    <div className="icon"><FontAwesomeIcon className="iconRegisterFormItem" icon={faAt}/> {/* email */}</div>
-                    
-                    <div className="icon"><FontAwesomeIcon className="iconRegisterFormItem" icon={faLock}/> {/* password */}</div>
-                    
-                    <div className="icon"><FontAwesomeIcon className="iconRegisterFormItem" icon={faLock}/> {/* password2 */}</div>
-                    
+                    <div className = "form-group inputRegisterForm">
+                        
+                        <input className="input form-control inputRegisterFormItem" type="text" name="name" 
+                            onChange={updateFormulario} onBlur={()=>checkError("name")} 
+                            placeholder="Nombre" size="40" lenght='30'>
+                        </input>
+                        
+                        <div className="msgError text-center mlf-text-small">{errors.eName}</div>
+
+                        <input className="input form-control inputRegisterFormItem" type="email" name="email" 
+                            onChange={updateFormulario} onBlur={()=>checkError("email")} 
+                            placeholder="Email" size="40" lenght='30'>
+                        </input>
+                        
+                        <div className="msgError text-center mlf-text-small">{errors.eEmail}</div>
+
+                        <input className="input form-control inputRegisterFormItem" type="password" name="password" 
+                            onChange={updateFormulario} onBlur={()=>checkError("password")} 
+                            placeholder="Contraseña" size="40" lenght='8'>
+                        </input>
+                        
+                        <div className="msgError text-center mlf-text-small">{errors.ePassword}</div>
+
+                        <input className="input form-control inputRegisterFormItem" type="password" name="password2" 
+                            onChange={updateFormulario} onBlur={()=>checkError("password2")} 
+                            placeholder="Confirmar contraseña" size="40" lenght='8'>
+                        </input>
+                        
+                        <div className="msgError text-center mlf-text-small">{errors.ePassword2}</div>
+
+                    </div>
+
                 </div>
-            
-                <div className = "form-group inputRegisterForm">
                     
-                    <input className="input form-control inputRegisterFormItem" type="text" name="name" 
-                        onChange={updateFormulario} onBlur={()=>checkError("name")} 
-                        placeholder="Nombre" size="40" lenght='30'>
-                    </input>
-                    
-                    <div className="msgError text-center mlf-text-small">{errors.eName}</div>
+                    <div className="mlf-submit-btn">
+                        <button type="submit" className="btn btn-primary btn-block mlf-btn-yellow" onClick={()=>ejecutaRegistro()}>Enviar</button>
+                    </div>
 
-                    <input className="input form-control inputRegisterFormItem" type="email" name="email" 
-                        onChange={updateFormulario} onBlur={()=>checkError("email")} 
-                        placeholder="Email" size="40" lenght='30'>
-                    </input>
-                    
-                    <div className="msgError text-center mlf-text-small">{errors.eEmail}</div>
+                    <div className="msgError text-center">{newMessage}</div>
 
-                    <input className="input form-control inputRegisterFormItem" type="password" name="password" 
-                        onChange={updateFormulario} onBlur={()=>checkError("password")} 
-                        placeholder="Contraseña" size="40" lenght='8'>
-                    </input>
-                    
-                    <div className="msgError text-center mlf-text-small">{errors.ePassword}</div>
-
-                    <input className="input form-control inputRegisterFormItem" type="password" name="password2" 
-                        onChange={updateFormulario} onBlur={()=>checkError("password2")} 
-                        placeholder="Confirmar contraseña" size="40" lenght='8'>
-                    </input>
-                    
-                    <div className="msgError text-center" mlf-text-small>{errors.ePassword2}</div>
-
-                </div>
-
+                    <p className="forgot-password text-center">
+                        ¿Ya tienes cuenta? <a href="/login">¡Inicia sesión aqui!</a>
+                    </p>
             </div>
-            
-            <div className="mlf-submit-btn">
-                <button type="submit" className="btn btn-primary btn-block mlf-btn-yellow" onClick={()=>ejecutaRegistro()}>Enviar</button>
-            </div>
-
-            <div className="msgError text-center">{newMessage}</div>
-
-            <p className="forgot-password text-center">
-                ¿Ya tienes cuenta? <a href="/login">¡Inicia sesión aqui!</a>
-            </p>
         </div>
-    </div>
 
 )
 

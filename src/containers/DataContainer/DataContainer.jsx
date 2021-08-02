@@ -1,8 +1,9 @@
 import React from 'react';
 import './DataContainer.scss';
-import ViewProfile from '../../components/ViewProfile/ViewProfile';
-
 import { connect } from 'react-redux';
+import ViewProfile from '../../components/ViewProfile/ViewProfile';
+import ViewAdminProject from '../../components/ViewAdminProject/ViewAdminProject';
+import ViewAdminProjectCreate from '../../components/ViewAdminProjectCreate/ViewAdminProjectCreate';
 
 
 
@@ -16,9 +17,9 @@ const DataContainer = (props) => {
 
                 return <ViewProfile/>
 
-            /* case 'getproject':
+            case 'getproject':
 
-                return 
+                return <ViewAdminProject/>
         
             case 'getcategory':
 
@@ -32,8 +33,13 @@ const DataContainer = (props) => {
                              
             case 'getuser':
 
-                return  */
+                return  
     
+            case 'getnewproject':
+
+                return <ViewAdminProjectCreate/>
+
+                return  
                 
             default:
 

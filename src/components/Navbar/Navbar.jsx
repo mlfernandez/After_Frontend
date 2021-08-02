@@ -127,7 +127,7 @@ const Navbar = (props) => {
     )
 
     // vista navbar usuario logeado
-  } else if ((props.credentials?.user?.profile === "user" )) {
+  } else if (props.credentials?.user?.profile === "user" ) {
     return (
       <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm p-3 mb-5 rounded">
       <div class="container-fluid">
@@ -176,7 +176,7 @@ const Navbar = (props) => {
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                           <li><a class="dropdown-item" onClick={() => cambiaDatos("getprofile")}>Mis datos</a></li>
-                          <li><a class="dropdown-item" href="#">Mis proyectos</a></li>
+                          <li><a class="dropdown-item" onClick={() => cambiaDatos("getproject")}>Mis proyectos</a></li>
                           <li><a class="dropdown-item" href="#">Otros</a></li>
                       </ul>
                   </li>
@@ -237,7 +237,7 @@ const Navbar = (props) => {
                           </a>
                           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                               <li><a class="dropdown-item" onClick={() => cambiaDatos("getprofile")}>Mis datos</a></li>
-                              <li><a class="dropdown-item" onClick={() => cambiaDatos("getproject")}>CRUD proyectos</a></li>
+                              <li><a class="dropdown-item" onClick={() => cambiaDatos("getproject")}>Proyectos</a></li>
                               <li><a class="dropdown-item" onClick={() => cambiaDatos("getcategory")}>CRUD categorías</a></li>
                               <li><a class="dropdown-item" onClick={() => cambiaDatos("getrole")}>CRUD roles</a></li>
                               <li><a class="dropdown-item" onClick={() => cambiaDatos("getuser")}>CRUD usuarios</a></li>
