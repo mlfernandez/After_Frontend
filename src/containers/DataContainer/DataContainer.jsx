@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import ViewProfile from '../../components/ViewProfile/ViewProfile';
 import ViewAdminProject from '../../components/ViewAdminProject/ViewAdminProject';
 import ViewAdminProjectCreate from '../../components/ViewAdminProjectCreate/ViewAdminProjectCreate';
+import ViewAdminProjectFind from '../../components/ViewAdminProjectFind/ViewAdminProjectFind';
 
 
 
@@ -39,7 +40,10 @@ const DataContainer = (props) => {
 
                 return <ViewAdminProjectCreate/>
 
-                return  
+            case 'getsearchproject':
+
+                return <ViewAdminProjectFind/>    
+
                 
             default:
 

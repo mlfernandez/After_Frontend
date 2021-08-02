@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import { UPDATE } from '../../redux/types'
+import { GETSEARCHPROJECT, UPDATE } from '../../redux/types'
 import { Input, notification } from 'antd';
 import './ViewAdminProject.scss';
 import moment from 'moment';
@@ -110,6 +110,12 @@ const DataProject = (props) => {
                 props.dispatch({ type: GETNEWPROJECT, payload: info });
     
                 break;
+
+            case "getsearchproject":
+                props.dispatch({ type: GETSEARCHPROJECT, payload: info });
+    
+                break;
+
     
     
             default:
@@ -137,6 +143,7 @@ const DataProject = (props) => {
                         <br />
                         <div><h5>Esta es la vista administrador,</h5></div>
                         <div><h5>aquí puedes crear y modificar proyectos.</h5></div>
+                        <br />
                     </div>  
 
                 </div>
@@ -149,7 +156,7 @@ const DataProject = (props) => {
                         </div>
 
                         <div className="mlf-submit-btn">
-                            <button type="submit" className="btn btn-primary btn-block mlf-btn-yellow" onClick={()=>allProject()}>Buscar proyectos</button>
+                            <button type="submit" className="btn btn-primary btn-block mlf-btn-yellow" onClick={()=> cambiaDatos("getsearchproject")}>Buscar proyectos</button>
                         </div>
 
 

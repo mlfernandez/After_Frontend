@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import { UPDATE } from '../../redux/types'
+import { GETPROJECT, UPDATE } from '../../redux/types'
 import { Input, notification } from 'antd';
 import './ViewAdminProjectCreate.scss';
 import moment from 'moment';
@@ -101,6 +101,20 @@ const DataProject = (props) => {
     }
 
  
+    const cambiaDatos = async (info) => {
+        switch (info) {
+    
+            case "getproject":
+                props.dispatch({ type: GETPROJECT, payload: info });
+    
+                break;
+    
+    
+            default:
+    
+                break;
+            }
+      };
 
 
 
@@ -144,7 +158,7 @@ const DataProject = (props) => {
                 <div class="row row-cols">
 
                     <div class="col viewProyectHi">
-                        <div class="viewProyectHi">{user.name}!</div>
+                        <div class="viewProyectHi">¡{user.name}!</div>
                         <br />
                         <div><h5>¡Es hora de crear nuevos proyectos!</h5></div>
                     </div>  
@@ -198,8 +212,17 @@ const DataProject = (props) => {
 
                     </div>
 
-                    <div className="mlf-submit-btn">
-                        <button type="submit" className="btn btn-primary btn-block mlf-btn-yellow" onClick={()=>createNewProject()}>Guardar</button>
+                    <div className="row row-cols-4 ">
+                        <div className="col mlf-submit-btn">
+                        </div>
+                        <div className="col mlf-submit-btn">
+                            <button type="submit" className="btn btn-primary btn-block mlf-btn-yellow" onClick={()=>createNewProject()}>Guardar</button>
+                        </div>
+                        <div className="col mlf-submit-btn">
+                        <button type="submit" className="btn btn-primary btn-block mlf-btn-yellow" onClick={() => cambiaDatos("getproject")}>Volver</button>
+                        </div>
+                        <div className="col mlf-submit-btn">
+                        </div>
                     </div>
 
 

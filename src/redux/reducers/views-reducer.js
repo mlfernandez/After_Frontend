@@ -1,4 +1,4 @@
-import {GETPROFILE, GETCATEGORY, GETPROJECT, GETUSER, GETROLE, DELETE, GETNEWPROJECT} from '../types';
+import {GETPROFILE, GETCATEGORY, GETPROJECT, GETUSER, GETROLE, DELETE, GETNEWPROJECT, GETSEARCHPROJECT} from '../types';
 const initialState = 
     'getprofile'
 ;
@@ -12,6 +12,9 @@ const viewsReducer = (state = initialState, action) => {
                         
         case GETNEWPROJECT:
             return action.payload; 
+
+        case GETSEARCHPROJECT:
+            return action.payload;     
 
         case GETCATEGORY:
             return action.payload;   
