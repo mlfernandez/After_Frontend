@@ -73,7 +73,7 @@ const DataProject = (props) => {
             console.log(search, "search")
             console.log(query, "query")
     
-            if (search === "id") {
+            if (search === "id" & query) {
 
 
                 let body = {
@@ -112,12 +112,25 @@ const DataProject = (props) => {
       };
 
 
+       //Guarda la movie en redux y nos lleva a la vista de película.
+   const viewMore = async (data) => {
+    try{
+
+/*       props.dispatch({type:PROJET,payload: data});
+
+      history.push("/moviedetails") */
+
+  }catch (err){
+          
+       }      
+
+  }  
 
 
     
 
     if (props.credentials?.user?.profile === "admin") {
-        
+        if (!project?.name) {
 
         return (
             
@@ -143,7 +156,7 @@ const DataProject = (props) => {
 
 
                                 
-                                <select id="search" class="form-select inputRegisterFormItem" aria-label="Default select example" onChange={()=>searchProject(document.getElementById("search").value)}>
+                                <select id="search" class="form-select inputRegisterFormItem" aria-label="Default select example">
                                     <option selected>Buscar por:</option>
                                     <option value="id">Id</option>
                                     <option value="nombre">Nombre</option>
@@ -155,7 +168,6 @@ const DataProject = (props) => {
                                 </select>
 
                                 <input id="query" className="input form-control inputRegisterFormItem" type="text" name="name" 
-                                    onChange={()=>searchProject(document.getElementById("query").value)}
                                     placeholder="Buscar" size="40" lenght='30'>
                                 </input>
                     
@@ -173,7 +185,7 @@ const DataProject = (props) => {
                             <button type="submit" className="btn btn-primary btn-block mlf-btn-yellow" onClick={()=>searchProject()}>Buscar</button>
                         </div>
                         <div className="col mlf-submit-btn">
-                        <button type="submit" className="btn btn-primary btn-block mlf-btn-yellow" onClick={() => cambiaDatos("getproject")}>Volver</button>
+                            <button type="submit" className="btn btn-primary btn-block mlf-btn-yellow" onClick={() => cambiaDatos("getproject")}>Volver</button>
                         </div>
                         <div className="col mlf-submit-btn">
                         </div>
@@ -189,9 +201,72 @@ const DataProject = (props) => {
 
         )
 
+    } else {
+
+        return (
+            
+            <div class="container">
+
+                <div class="row row-cols">
+                    <div class="col viewProyectHi">
+                        <div class="viewProyectHi">¡{user.name}!</div>
+                        <br />
+                        <div><h5>¡Aquí esta la búsqueda!</h5></div> 
+                    </div>  
+                </div>
+
+                    
+                    <div class="row row-cols">
+
+                        <div className = "registerForm"> 
+
+                            <div className="inputRegister">
+
+                                <div className = "form-group inputRegisterForm">
+
+                                    <form class="form-floating">
+                                        <input type="text" class="form-control" id="floatingInputValue" placeholder={project.name} value={project.name} size="40" lenght='30'/>
+                                        <label for="floatingInputValue">Nombre</label>
+                                        
+                                    </form>
+
+                                    <form class="form-floating">
+                                        <input type="text" class="form-control" id="floatingInputValue" placeholder={project.state} value={project.state} size="40" lenght='30'/>
+                                        <label for="floatingInputValue">Estado</label>
+                                    </form>
+
+                                    <form class="form-floating">
+                                        <input type="text" class="form-control" id="floatingInputValue" placeholder={project.endDate} value={moment(project.endDate).format('DD/MM/YYYY')} size="40" lenght='30'/>
+                                        <label for="floatingInputValue">Fecha límite</label>
+                                    </form>
+
+                                    <form class="form-floating">
+                                        <input type="text" class="form-control" id="floatingInputValue" placeholder={project.idCategory} value={project.idCategory} size="60" lenght='30'/>
+                                        <label for="floatingInputValue">Categoría</label>
+                                    </form>
+                                </div>
+
+                                
+                            </div>
+                            <div className="row row-cols-3 ">
+
+                                <div className="col mlf-submit-btn">
+                                    <button type="submit" className="btn btn-primary btn-block mlf-btn-yellow" onClick={()=>searchProject()}>Modificar</button>
+                                </div>
+                                <div className="col mlf-submit-btn">
+                                    <button type="submit" className="btn btn-primary btn-block mlf-btn-yellow" onClick={() => cambiaDatos("getproject")}>Eliminar</button>
+                                </div>
+                                <div className="col mlf-submit-btn">
+                                    <button type="submit" className="btn btn-primary btn-block mlf-btn-yellow" onClick={() => cambiaDatos("getproject")}>Volver</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>    
+        )
     }
 }
-
+}
 
 
 export default connect((state)=>({
