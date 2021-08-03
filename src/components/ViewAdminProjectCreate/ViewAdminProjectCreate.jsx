@@ -64,10 +64,8 @@ const DataProject = (props) => {
         switch (arg){
 
             case 'name':
-                if(datosProject.name.length < 2){
-                    setErrors({...errors, eName: 'El campo nombre no puede estar vacío.'});
-                }else if(datosProject.name.length < 2){
-                    setErrors({...errors, eName: 'El nombre debe de tener al menos 2 caracteres'});
+                if(datosProject.name.length < 3){
+                    setErrors({...errors, eName: 'El campo nombre debe tener más caracteres.'});
                 }else if (! /^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/i.test(datosProject.name) ) {
                     setErrors({...errors, eName: 'Introduce el formato de nombre valido'}); 
                 }else{
@@ -75,6 +73,16 @@ const DataProject = (props) => {
                 }
             break;
 
+            case 'endDate':
+                let today = moment().format("DD/MM/YYYY")
+                let endDate = moment(datosProject.endDate).format("DD/MM/YYYY")
+
+                if (today > endDate){
+                    setErrors({...errors, eEndDate: 'La fecha debe ser mayor a hoy'});
+                }else {
+                    setErrors({...errors, eEndDate: ''});
+                }
+            break;
             
 
             default:
@@ -180,7 +188,7 @@ const DataProject = (props) => {
                     
                                 <div className="msgError text-center mlf-text-small">{errors.eName}</div>
                                 
-                                <select id="state" class="form-select inputRegisterFormItem" aria-label="Default select example" onChange={()=>createNewProject(document.getElementById("state").value)}>
+                                <select id="state" class="form-select inputRegisterFormItem" aria-label="Default select example">
                                     <option selected>Elegir estado:</option>
                                     <option value="activo">activo</option>
                                     <option value="curso">curso</option>
@@ -193,9 +201,9 @@ const DataProject = (props) => {
                                     placeholder="Fecha finalizacion" size="40" lenght='8'>
                                 </input>
                                 
-                                <div className="msgError text-center mlf-text-small">{errors.ePassword}</div>
+                                <div className="msgError text-center mlf-text-small">{errors.eEndDate}</div>
 
-                                <select id="category" class="form-select inputRegisterFormItem" aria-label="Default select example" onChange={()=>createNewProject(document.getElementById("category").value)}>
+                                <select id="category" class="form-select inputRegisterFormItem" aria-label="Default select example">
                                     <option selected>Elegir categoría:</option>
                                     <option value="1">Tecnología</option>
                                     <option value="2">Negocios</option>

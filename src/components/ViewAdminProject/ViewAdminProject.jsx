@@ -62,46 +62,6 @@ const DataProject = (props) => {
     }
 
 
-    const checkError = (arg) => {
-        switch (arg){
-
-            case 'name':
-                if(datosProject.name.length < 2){
-                    setErrors({...errors, eName: 'El campo nombre no puede estar vacío.'});
-                }else if(datosProject.name.length < 2){
-                    setErrors({...errors, eName: 'El nombre debe de tener al menos 2 caracteres'});
-                }else if (! /^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/i.test(datosProject.name) ) {
-                    setErrors({...errors, eName: 'Introduce el formato de nombre valido'}); 
-                }else{
-                    setErrors({...errors, eName: ''});
-                }
-            break;
-
-            
-
-            default:
-
-            break;
-
-
-        }
-    }
-
-    const allProject = async () => {
-
-        try {
-            let token = props.credentials.token;
-
-            let res = await axios.get("http://localhost:3006/project", {headers:{'authorization':'Bearer ' + token}})
-
-            console.log(res, "esto es res")
-            console.log(res.data.results, "esto es todo")
-            setProject(res.data.results)
-        } catch (err) {
-
-        }
-    }
-
  
     const cambiaDatos = async (info) => {
         switch (info) {

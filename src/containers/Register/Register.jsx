@@ -49,9 +49,7 @@ const Register = () => {
         switch (arg){
             case 'name':
                 if(datosUser.name.length < 2){
-                    setErrors({...errors, eName: 'El campo nombre no puede estar vacío.'});
-                }else if(datosUser.name.length < 2){
-                    setErrors({...errors, eName: 'El nombre debe de tener al menos 2 caracteres'});
+                    setErrors({...errors, eName: 'El nombre debe de tener al menos 2 caracteres.'});
                 }else if (! /^[a-z ,.'-]+$/i.test(datosUser.name) ) {
                     setErrors({...errors, eName: 'Introduce el formato de nombre valido'}); 
                 }else{
@@ -59,34 +57,8 @@ const Register = () => {
                 }
             break;
 
-            case 'lastName':   
-                if(datosUser.lastName.length < 2){
-                    setErrors({...errors, eLastName: 'El campo Apellido no puede estar vacío.'});
-                }else if (datosUser.lastName.length < 2){
-                    setErrors({...errors, eLastName: 'El apellido debe de tener al menos 2 caracteres'});
-                }else if (! /^[a-z ,.'-]+$/i.test(datosUser.lastName) ) {
-                    setErrors({...errors, eLastName: 'Introduce el formato de apellido valido'});     
-                }else{
-                    setErrors({...errors, eLastName: ''});
-                }  
-            break;
-
-            case 'lastName2':    
-                if(datosUser.lastName2.length < 2){
-                    setErrors({...errors, eLastName2: 'El campo Apellido no puede estar vacío.'});
-                }else if (datosUser.lastName2.length < 2){
-                    setErrors({...errors, eLast_name2: 'El apellido debe de tener al menos 2 caracteres'});
-                }else if (! /^[a-z ,.'-]+$/i.test(datosUser.lastName2) ) {
-                    setErrors({...errors, eLastName2: 'Introduce el formato de apellido valido'});     
-                }else{
-                    setErrors({...errors, eLastName2: ''});
-                   }   
-            break;
-
             case 'email':
-                if(datosUser.email.length < 1){
-                    setErrors({...errors, eEmail: 'El campo email no puede estar vacío.'});
-                }else if (datosUser.email.length < 4){
+                if(datosUser.email.length < 4){
                     setErrors({...errors, eEmail: 'El email debe de tener al menos 4 caracteres'});
                 }else if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(datosUser.email) ) {
                     setErrors({...errors, eEmail: 'Introduce el formato de email valido ejemplo@ejemplo.com'});                    
@@ -130,50 +102,56 @@ const Register = () => {
     }
 
     const ejecutaRegistro = async () => {
+
+        
+        if ((datosUser.password == datosUser.password2) & 
+            (datosUser.password.length == 6) &
+            (/^\+?[0-9]{6}/.test(datosUser.password)) &
+            (datosUser.email.length > 1) &
+            (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(datosUser.email)) &
+            (datosUser.name.length > 2) &
+            (/^[a-z ,.'-]+$/i.test(datosUser.name))
+            ) {
+
+      
+                    let  user = {
+                        name : datosUser.name,
+                        email: datosUser.email,
+                        password: datosUser.password,
+                        password2: datosUser.password2,        
+                    }
+            
+                axios.post(("http://localhost:3006/user"), user)        
+                .then(res => {
+                    notification.success({message:'Usuario registrado.',description: "Te hemos enviado un email para activar la cuenta." });
+        
+                    setTimeout(()=> {
+                        history.push('/login');
+                    }, 5000);     
+                }).catch(err => {
+                   
+                    var errorText = err.response.data.message;
+                    if (errorText.includes("email")){
+                        setNewMessage(JSON.stringify("El email ya existe en la base de datos."));
+        
+                    } else {
+                        setNewMessage(JSON.stringify(err.response.data.message));            
+                    }
+                
+                }); 
+                setNewMessage("Registro realizado con exito");
+
+        } else {
+            
+            setNewMessage("Los datos no son correctos, no se pudo ejecutar el registro");
+        }
+
         
 
-        let  user = {
 
-            name : datosUser.name,
-            lastName: datosUser.lastName,
-            lastName2: datosUser.lastName2,
-            email: datosUser.email,
-            password: datosUser.password,
-            password2: datosUser.password2,        
-
-        }
-
-        var  array = Object.entries(user);
-        var num = array.length;
-
-        for (let x = 0; x < num; x++){
-            if(array[x][1] === ''){
-                let campoVacio = ("El campo " + array[x][0] + " no puede estar vacío.");
-                return setNewMessage(campoVacio);
-            }
-
-        }
-       
-     
-         axios.post(("http://localhost:3006/user"), user)        
-        .then(res => {
-            notification.success({message:'Usuario registrado.',description: "Te hemos enviado un email para activar la cuenta." });
-
-            setTimeout(()=> {
-                history.push('/login');
-            }, 5000);     
-        }).catch(err => {
-           
-            var errorText = err.response.data.message;
-            if (errorText.includes("email")){
-                setNewMessage(JSON.stringify("El email ya existe en la base de datos."));
-
-            } else {
-                setNewMessage(JSON.stringify(err.response.data.message));            
-            }
             
-        });     
-      
+
+    
     }    
 
     return (
