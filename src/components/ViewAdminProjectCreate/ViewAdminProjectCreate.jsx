@@ -15,7 +15,7 @@ import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 const DataProject = (props) => {
        
         //Hooks
-        /* const [profile, setProfile] = useState([]);  */
+
         const [project, setProject] = useState([]); 
         const [datosProject, setDatosProject] = useState(
             {
@@ -76,7 +76,8 @@ const DataProject = (props) => {
             case 'endDate':
                 let today = moment().format("DD/MM/YYYY")
                 let endDate = moment(datosProject.endDate).format("DD/MM/YYYY")
-
+                console.log (today)
+                console.log (endDate)
                 if (today > endDate){
                     setErrors({...errors, eEndDate: 'La fecha debe ser mayor a hoy'});
                 }else {
@@ -93,20 +94,6 @@ const DataProject = (props) => {
         }
     }
 
-    const allProject = async () => {
-
-        try {
-            let token = props.credentials.token;
-
-            let res = await axios.get("http://localhost:3006/project", {headers:{'authorization':'Bearer ' + token}})
-
-            console.log(res, "esto es res")
-            console.log(res.data.results, "esto es todo")
-            setProject(res.data.results)
-        } catch (err) {
-
-        }
-    }
 
  
     const cambiaDatos = async (info) => {
@@ -128,32 +115,47 @@ const DataProject = (props) => {
 
 
     const createNewProject = async () => {   
+
+        let today = moment().format("DD/MM/YYYY")
+        let endDate = moment(datosProject.endDate).format("DD/MM/YYYY")
         
-      
-        let token = props.credentials.token;
+        if ((datosProject.name.length > 3) &
+            (/^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/i.test(datosProject.name) ) &
+            (today < endDate)
+            ) {
+                
+            let token = props.credentials.token;
+            let state = document.getElementById("state").value;  
+            let idCategory = document.getElementById("category").value;  
 
-        let state = document.getElementById("state").value;  
-        let idCategory = document.getElementById("category").value;  
+            var project = {
 
-        var project = {
+                name : datosProject.name,
+                state: state,
+                endDate: datosProject.endDate,
+                idCategory: idCategory,
+                
+            }
 
-            name : datosProject.name,
-            state: state,
-            endDate: datosProject.endDate,
-            idCategory: idCategory,
-            
-        }
+            console.log(project)
 
-        console.log(project)
-
-        axios.post(("http://localhost:3006/project"), project, {headers:{'authorization':'Bearer ' + token}})    
-        .then(res => {
-            notification.success({message:'Proyecto creado',description: "Se ha creado el proyecto con éxito." });
+            axios.post(("http://localhost:3006/project"), project, {headers:{'authorization':'Bearer ' + token}})    
+            .then(res => {
+                notification.success({message:'Proyecto creado',description: "Se ha creado el proyecto con éxito." });
+        
+            }).catch(err => {
     
-        }).catch(err => {
-  
+                
+            }); 
+            setNewMessage("Proyecto creado con éxito.");
+        
+
+        } else { 
+
             
-        }); 
+            setNewMessage("Los datos no son correctos, no se pudo crear el proyecto.");
+
+        }
     }
 
     if (props.credentials?.user?.profile === "admin") {
@@ -217,6 +219,9 @@ const DataProject = (props) => {
                             </div>
 
                         </div>
+
+                        <div className="msgError text-center">{newMessage}</div>
+                        <br />
 
                     </div>
 
